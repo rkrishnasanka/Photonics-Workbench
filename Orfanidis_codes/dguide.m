@@ -18,13 +18,13 @@
 
 % Sophocles J. Orfanidis - 1999-2008 - www.ece.rutgers.edu/~orfanidi/ewa
 
-function [be,kc,ac,fc,err] = dguide(lambda,a,n1,n2,Nit)
+function [be,kc,ac,fc,k0,err] = dguide(lambda0,a,n1,n2,Nit)
 
 if nargin==0, help dguide; return; end
 if nargin==4, Nit=3; end;
 
 c0 = 3e8;                                   % c0 in m/s
-k0 = 2*pi/lambda;%= 2*pi*f/c0;              % free-space wavenumber
+k0 = 2*pi/lambda0;%= 2*pi*f/c0;              % free-space wavenumber
 NA = sqrt(n1^2 - n2^2);                     % numerical aperture 
 R = k0*a*NA;                                % circle radius
 M = floor(2*R/pi);                          % number of modes = M+1
