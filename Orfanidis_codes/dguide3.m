@@ -3,9 +3,9 @@
 %  |    ns     |  nf  |    nc    |   assume nf > ns >= nc
 %  | substrate | film | cladding |
 %
-% Usage: [be,kc,as,ac,fm,Nit] = dguide3(a,ns,nf,nc,mode,r,tol)
-%        [be,kc,as,ac,fm,Nit] = dguide3(a,ns,nf,nc,mode,r)       (uses tol=1e-10)
-%        [be,kc,as,ac,fm,Nit] = dguide3(a,ns,nf,nc,mode)         (uses r=0.5 and tol=1e-10)
+% Usage: [be,kc,as,ac,fm,Nit,Err] = dguide3(a,ns,nf,nc,mode,r,tol)
+%        [be,kc,as,ac,fm,Nit,Err] = dguide3(a,ns,nf,nc,mode,r)       (uses tol=1e-10)
+%        [be,kc,as,ac,fm,Nit,Err] = dguide3(a,ns,nf,nc,mode)         (uses r=0.5 and tol=1e-10)
 %        
 % a        = half-width of slab in units of the operating free-space wavelength la0
 % ns,nf,nc = refractive indices of substrate, dielectric film, cladding (nf > ns >= nc)      
@@ -54,7 +54,7 @@
 
 % Sophocles J. Orfanidis - 1999-2012 - http://www.ece.rutgers.edu/~orfanidi/ewa/
 
-function [be,kc,as,ac,fm,Nit] = dguide3(a,ns,nf,nc,mode,r,tol)
+function [be,kc,as,ac,fm,Nit,Err] = dguide3(a,ns,nf,nc,mode,r,tol)
 
 if nargin==0, help dguide3; return; end
 if nargin<=6, tol = 1e-10; end
@@ -103,4 +103,8 @@ fm = Rm/R;                          % cutoff frequencies in units of f = c0/la0
                                     % note, Rm = 2*pi*fm/c0*a*sqrt(nf^2-ns^2), R = 2*pi*f/c0*a*sqrt(nf^2-ns^2)
                                     % so that Rm/R = fm/f,  k0 = 2*pi/la0 = 2*pi*f/c0
 
+
+% Calculate error norms using the orfanidis recipe
+
+Err = norm(kc*2*pi*a - m*pi/2 - atan(ps*as./kc)/2 - atan(pc*ac./kc)/2);
 
