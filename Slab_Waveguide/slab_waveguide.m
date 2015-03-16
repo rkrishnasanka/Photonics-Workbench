@@ -11,7 +11,7 @@ h=5.0;     %thickness of film layer
 a_c=2*h;   %thickness of cladding
 a_s=2*h;   %thickness of substrate
 
-k=2*pi*lambda; %wavenumber
+k=2*pi/lambda; %wavenumber
 kappa_f=0:0.01:3.0; %establish range of k_f
 beta_temp=sqrt((n_f*k)^2-kappa_f.^2);
 beta_min=min(beta_temp);
