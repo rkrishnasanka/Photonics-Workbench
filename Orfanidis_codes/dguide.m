@@ -8,10 +8,10 @@
 % n1,n2 = refractive indices of slab and cladding (n1>n2)
 % Nit   = number of Newton iterations (default Nit=3)
 %
-% be  = propagation wavenumbers of the supported TE modes in rads/cm 
-% kc  = cutoff wavenumbers inside slab in rad/cm
-% ac  = cutoff wavenumbers outside slab in nepers/cm
-% fc  = cutoff frequencies below f in GHz
+% be  = propagation wavenumbers of the supported TE modes in rads/m 
+% kc  = cutoff wavenumbers inside slab in rad/m
+% ac  = cutoff wavenumbers outside slab in nepers/m
+% fc  = cutoff frequencies below f in Hz
 % err = approximation error in determining kc,ac
 %
 % calls DSLAB to solve for kc,ac
